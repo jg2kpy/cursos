@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Pagina de pruebas
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Pagina de mi web</h1>
+    <p>{{"Creado por Jose Gutierrez ñññ" | cut:"ñ"}}</p>
+
+    <p>{{texto|default:"No hay nada"}}</p>
+
+    <p>{{lista|join:', '}}</p>
+
+    <p>{{"texto pruebas"|length}}</p>
+
+    <p>{{"texto Pruebas"|lower}}</p>
+
+    <p>{{lista|random}}</p>
+
+    <p>{{"<h1>texto Pruebas</h1> hola mundo"|striptags|wordcount}}</p>
+{% endblock %}

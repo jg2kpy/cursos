@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %} {% endblock %} | Sitio Web con Django</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+</head>
+
+<body>
+
+    <header>
+        <div id="logotipo">
+            <img src="{% static 'images/logo.png' %}" alt=""/>
+            <h1>Sitio Web con Django</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Inicio</a>
+            </li>
+    
+            <li>
+                <a href="{% url 'hola_mundo' %}">Hola Mundo</a>
+            </li>
+    
+            <li>
+                <a href="{% url 'pagina' %}">Pagina de pruebas</a>
+            </li>
+    
+            <li>
+                <a href="{% url 'contacto' 'Junior' 'Gutierrez' %}">Contacto</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+
+    <div id="content">
+        <div class="box">
+            {% block content %}
+            <strong>Contenido del bloque original</strong>
+            {% endblock %}
+        </div>
+    </div>
+    <footer>
+        Master en Python Junior Gutierrez WEB - {% now "d/m/Y h:m:s" %}
+    </footer>
+</body>
+
+</html>

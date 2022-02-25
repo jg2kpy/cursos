@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "debug.py", line 13, in <module>
+    raise Exception('Esto es un error que va a ir al error_log.txt')
+Exception: Esto es un error que va a ir al error_log.txt

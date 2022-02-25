@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Incio
+
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Pagina de inicio</h1>
+
+    <hr/>
+
+    {% include 'includes/edad.html' %}
+
+    <hr/>
+
+    {% include 'includes/personas.html' %}
+   
+    <hr/>
+
+{% endblock %}

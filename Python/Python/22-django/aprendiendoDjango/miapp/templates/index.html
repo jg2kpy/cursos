@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+    {% comment "Nota para el comentario" %}
+        comentario
+        <p>Ano pares antes del 2050:</p>
+    {% endcomment %}
+
+    <h1 class="title">{{title}}</h1>
+
+    <p> {{mi_variable}} </p>
+    
+    {% if nombre and nombre == "Junior Gutierrez" %}
+        <p>{{nombre}}</p>
+    {% else %}
+        <strong>El nombre no existe o no coincide</strong>
+    {% endif %}
+
+    <h3>Listado de lenguajes de programacion</h3>
+    <ul>
+    {% for lenguaje in lenguajes%}
+        <li>{{forloop.counter}}. {{lenguaje}}</li>
+    {% empty %}
+        <p> NO HAY LENGUAJES QUE MOSTRAR </p>
+    {% endfor %}
+    </ul>
+
+    <br>
+    <hr/>
+    <br>
+    {% include 'fecha-actual.html' with saludo='Hola mundo desde plantilla:' %}
+
+    <p>Ano pares antes del 2050:</p>
+
+    <ul>
+    {% for year in years%}
+        {% if  year|divisibleby:2 == True%}
+            <li>{{year}}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+
+{% endblock %}
