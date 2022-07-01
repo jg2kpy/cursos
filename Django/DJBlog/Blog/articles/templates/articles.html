@@ -4,16 +4,26 @@
 
 {% block style %}
     <style>
-        .h1-style{
-            color: red;
+        .link-style{
+            text-decoration:none;
+            color: black
+        }
+
+        .link-style:hover{
+            text-decoration:none;
+            color: gray
         }
     </style>
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1 class = "h1-style">Article List</h1>
-    <p>This is the place we want to render our articled from database</p>
-    {{article}}
+<div class="container mt-4">
+    {% for article in article_list %}
+        <span class="badge rounded-pill bg-success">Author: {{article.author}}</span>
+        <h1><a class="link-style" href="{% url 'article_details' article.slug %}">{{article.title}}</a></h1>
+    {% endfor %}
+
+    {% include 'pagination.html' with page=article_list %}
+
 </div>
 {% endblock %}

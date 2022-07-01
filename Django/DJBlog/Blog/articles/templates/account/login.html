@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block title %}Login{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Login User</h1>
+        <p>Use the following form for the login</p>
+        <form action="" method="POST" novalidate>
+
+            {{form.as_p}}
+            {% csrf_token %}
+
+            <input type="submit" value="Login" class="btn btn-success">
+
+        </form>
+    </div>
+{% endblock %}
