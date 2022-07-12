@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f=_(vu$3l_k_u+y)+*22)(4%nw%o-4n$9+(gmhoje&_-+e$ahy'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['django-tutorial-jg2kpy.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['django-tutorial-jg2kpy.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -79,15 +79,19 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+# Password validation
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dv1em0vg6adi8',
+        'HOST': 'ec2-44-195-162-77.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'rucgxqtzdellfx',
+        'PASSWORD': os.environ['POSTGRESS_PASSWORD'],
     }
 }
 
-
-# Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
