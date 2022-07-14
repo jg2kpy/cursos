@@ -3,6 +3,19 @@
 
 {% block title %}Login{% endblock %}
 
+{% block style %}
+    <style>
+        .link-style{
+            text-decoration: none;
+            color: white;
+        }
+        .link-style:hover{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <div class="container mt-4 container_style">
         <h1>Login User</h1>
@@ -16,5 +29,24 @@
             <input type="submit" value="Login" class="btn btn-success">
 
         </form>
+
+        <div name="socials" class="row mt-4">
+            <div class="col">
+                <button class = "btn btn-primary">
+                    <a class = "link-style" href="{% url 'social:begin' 'facebook'%}">Signin Facebook</a>
+                </button>
+            </div>
+            <div class="col">
+                <button class = "btn btn-danger">
+                    <a class = "link-style" href="{% url 'social:begin' 'github'%}">Signin Github</a>
+                </button>
+            </div>
+            <div class="col">
+                <button class = "btn btn-warning">
+                    <a class = "link-style" href="{% url 'social:begin' 'linkedin-oauth2' %}">Signin Linkedin</a>
+                </button>
+            </div>
+        </div>
+
     </div>
 {% endblock %}

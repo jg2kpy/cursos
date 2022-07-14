@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import article_list, article_details, user_login, register, article_form, update_article, delete_article
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.views.generic.base import RedirectView
@@ -16,4 +16,5 @@ urlpatterns = [
     path('add/', article_form, name='article_form'),
     path('update/<slug:slug>', update_article, name='update_article'),
     path('delete/<slug:slug>', delete_article, name='delete_article'),
+    path('social-auth/', include('social_django.urls', namespace='social')),
 ]
