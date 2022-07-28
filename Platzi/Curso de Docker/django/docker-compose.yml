@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    enviroment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  django:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver"
+    volumes:
+     - .:/DJANGO_WEBAPP
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  db-data:
+    driver: local
