@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gatitos aleatorios</title>
+</head>
+
+<body>
+    <h2>Michis APP</h2>
+    <button type="button" onclick="loadRandomMichis()">Click para Gato Aleatorio</button>
+    <br>
+    <span id="error"></span>
+    <br>
+
+    <section id="uploadingMichi">
+        <form id="uploadingForm">
+            <h2>Sube la foto de tu michi</h2>
+            <input type="file" name="file">
+            <button type="button" onclick="uploadMichiPhoto()">Subir foto de michi</button>
+        </form>
+    </section>
+    <br>
+
+    <section id="randomMichis">
+        <h2>Gatitos aleatorios</h2>
+
+        <article>
+            <img id="img1" width="300" alt="Foto gatito aleatorio">
+            <button id="btn1" type="button">Guardar michi en favorito</button>
+        </article>
+
+        <article>
+            <img id="img2" width="300" alt="Foto gatito aleatorio">
+            <button id="btn2" type="button">Guardar michi en favorito</button>
+        </article>
+
+    </section>
+
+    <section id="favoritesMichis">
+        <h2>Michis Favoritos</h2>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
