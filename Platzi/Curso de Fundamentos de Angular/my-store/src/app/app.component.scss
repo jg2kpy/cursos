@@ -1,0 +1,70 @@
+.box {
+  height: 100px;
+  width: 200px;
+  overflow: auto;
+  background: red;
+}
+
+.line-error {
+  height: 0;
+  border-bottom: 1px solid;
+
+  &.invalid {
+    border-color: red;
+  }
+
+  &.valid {
+    border-color: green;
+  }
+}
+
+.products--grid {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    h2,
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.message-error {
+  background-color: red;
+  color: white;
+  opacity: 0;
+  transition: all linear .5s;
+
+  &.invalid {
+    opacity: 1;
+  }
+}
+
+.styles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+//crear mediaquery para tablet con 4 columnas
+@media screen and (min-width: 768px) {
+  .products--grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .products--grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+  }
+}
