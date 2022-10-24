@@ -6,7 +6,7 @@ import 'package:api_rest/services/gifs_service.dart';
 String url = '';
 
 Future main() async {
-  getEnv();
+  await getEnv();
   runApp(const MyApp());
 }
 
@@ -19,6 +19,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late Future<List<Gif>> _listadoGifs;
+
+  final myController = TextEditingController();
 
   @override
   void initState() {
@@ -34,24 +36,47 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: const Text('Gifs app'),
           ),
-          body: FutureBuilder(
-            future: _listadoGifs,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                //print(snapshot.data);
-                return GridView.count(
-                  crossAxisCount: 2,
-                  children: _listGifs(snapshot.data),
-                );
-              } else if (snapshot.hasError) {
-                //print(snapshot.error);
-                return const Text("Error al obtener los gifs");
-              }
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: TextField(
+                  controller: myController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Busca un gif',
+                  ),
+                ),
+              ),
+              FutureBuilder(
+                future: _listadoGifs,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    //print(snapshot.data);
+                    return Expanded(
+                      child: GridView.count(
+                        crossAxisCount: 2,
+                        children: _listGifs(snapshot.data),
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    //print(snapshot.error);
+                    return const Text("Error al obtener los gifs");
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              setState(() {_listadoGifs = getGifsSearch(myController.text);});
             },
-          )),
+            child: const Icon(Icons.search),
+          ) ,
+          ),
     );
   }
 
