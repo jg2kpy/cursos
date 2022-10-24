@@ -42,6 +42,9 @@ class _MyAppState extends State<MyApp> {
                 padding: const EdgeInsets.all(12.0),
                 child: TextField(
                   controller: myController,
+                   onSubmitted: (value) {
+                    setState(() {_listadoGifs = getGifsSearch(myController.text);});
+                  },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Busca un gif',

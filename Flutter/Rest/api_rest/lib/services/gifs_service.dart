@@ -41,6 +41,10 @@ Future<List<Gif>> getGifs() async {
 }
 
 Future<List<Gif>> getGifsSearch(String search) async {
+  if(search==""){
+    return getGifs();
+  }
+
   List<Gif> retornoGifs = [];
 
   Uri uri = Uri.http(url, "/v1/gifs/search", {
