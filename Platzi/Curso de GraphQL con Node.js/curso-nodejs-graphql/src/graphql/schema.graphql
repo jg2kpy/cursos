@@ -1,0 +1,52 @@
+type Query {
+  hello: String!
+  getPerson(name: String, age: Int): String!
+  getInt(age: Int): Int!,
+  getFloat(price: Float): Float!,
+  getString: String!,
+  getBoolean: Boolean!,
+  getID: ID
+  getNumbers(numbers: [Int!]!): [Int!]!
+  #Products
+  product(id: ID!): Product
+  products: [Product!]!
+}
+
+type Mutation {
+  addProduct(dto: CreateProductInput!): Product
+  updateProduct(id: ID!, dto: UpdateProductDto!): Product
+  deleteProduct(id: ID!): ID
+}
+
+type Product {
+  id: ID!,
+  name: String!
+  price: Float!,
+  description: String
+  image: String!,
+  createdAt: String!
+  categoryId: Category!
+  category: Category!
+}
+
+type Category {
+  id: ID!
+  name: String!
+  image: String!
+}
+
+input CreateProductInput {
+  name: String!
+  price: Float!,
+  description: String
+  image: String!,
+  categoryId: Int,
+}
+
+input UpdateProductDto {
+  name: String
+  price: Float,
+  description: String
+  image: String,
+  categoryId: Int,
+}
